@@ -14,6 +14,10 @@ namespace AbstractLib
     [Work(1, "001")]
     public class WorkOne : Works
     {
+        /// <summary>
+        /// 继承类 Works 应用,实际是调用 WorkOne 的时候，是先来构造 Works
+        /// </summary>
+        /// <param name="model"></param>
         public WorkOne(Worker model)
             : base(model)
         {

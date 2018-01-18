@@ -16,6 +16,7 @@ namespace AbstractLib
     {
         /// <summary>
         /// 构造函数,base(model) 构造父类
+        /// 继承类 Works 应用,实际是调用 WorkTwo 的时候，是先来构造 Works
         /// </summary>
         /// <param name="model"></param>
         public WorkTwo(Worker model)

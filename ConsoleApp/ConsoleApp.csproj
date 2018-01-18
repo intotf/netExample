@@ -63,6 +63,10 @@
       <Project>{375bcbc1-af9d-4dac-a55e-15585a23bc23}</Project>
       <Name>ExtendLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Generic\GenericLib.csproj">
+      <Project>{6e4ed1c2-9751-4dde-a49c-2819afd29d05}</Project>
+      <Name>GenericLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterfaceLib\InterfaceLib.csproj">
       <Project>{04acc0ea-abcf-4194-9821-ab1ca14ffdf6}</Project>
       <Name>InterfaceLib</Name>
