@@ -59,7 +59,7 @@ namespace Reflection
         /// <typeparam name="T"></typeparam>
         /// <param name="model">指定的实体</param>
         /// <param name="MethodName">执行方法名</param>
-        public MethodInfo GetMethods<T>(T model, string MethodName = "MyToString") where T : class,new()
+        public MethodInfo GetMethods<T>(T model, string MethodName = "MyToString") where T : class
         {
             var methods = model.GetType()
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance).
@@ -90,7 +90,19 @@ namespace Reflection
             }
             Console.WriteLine("{0} 方法执行如下：", method.Name);
             ParameterInfo[] paramsInfo = method.GetParameters();    //得到指定方法的参数列表 
-            var obj = Activator.CreateInstance(method.DeclaringType);
+            
+            //获取方法所在类的实例
+            var declaringType = method.DeclaringType;
+            var constructors = declaringType.GetConstructors().FirstOrDefault();    //获取类的第一个构造函数
+            var consInfo = constructors.GetParameters();                            //获取构造函数所需的参数
+            var constructorsParame = new object[consInfo.Length];
+            for (int i = 0; i < consInfo.Length; i++)
+            {
+                constructorsParame[i] = Convert.ChangeType(consInfo[i].DefaultValue, consInfo[i].ParameterType);
+            }
+            var obj = Activator.CreateInstance(declaringType, constructorsParame);  //实例化对象
+
+
             ////2.方法需要传入的参数
             object[] parame = new object[paramsInfo.Length];
             for (int i = 0; i < paramsInfo.Length; i++)
