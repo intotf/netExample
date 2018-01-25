@@ -29,7 +29,7 @@ namespace GenericLib
         public void GetDelegate()
         {
             modelDelegate dele = this.modelDeleegateFun;
-            dele.Invoke(new Worker() { Name = "张三" });
+            dele.Invoke(new Worker("张三"));
         }
 
         /// <summary>

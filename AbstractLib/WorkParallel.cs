@@ -14,9 +14,9 @@ namespace AbstractLib
     /// </summary>
     public class WorkParallel
     {
-        private static WorkOne workOne = new WorkOne(new Worker() { Name = "张三", Age = 18 });
+        private static WorkOne workOne = new WorkOne(new Worker("张三") { Age = 18 });
 
-        private static WorkTwo workTwo = new WorkTwo(new Worker() { Name = "李四", Age = 22 });
+        private static WorkTwo workTwo = new WorkTwo(new Worker("李四") { Age = 22 });
 
         /// <summary>
         /// 时间统计器

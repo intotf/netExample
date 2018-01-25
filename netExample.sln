@@ -24,6 +24,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericLib", "Generic\GenericLib.csproj", "{6E4ED1C2-9751-4DDE-A49C-2819AFD29D05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionLib", "ExpressionLib\ExpressionLib.csproj", "{CD817F13-569A-4390-B9AD-864CB079EDB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{174AEC4C-7ED6-451D-B20B-6E0CDAAB974C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOSerialize", "IOSerialize\IOSerialize.csproj", "{B9692DB6-9C23-4C46-9E39-FFEE1770946E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,8 +68,19 @@ Global
 		{6E4ED1C2-9751-4DDE-A49C-2819AFD29D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E4ED1C2-9751-4DDE-A49C-2819AFD29D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E4ED1C2-9751-4DDE-A49C-2819AFD29D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD817F13-569A-4390-B9AD-864CB079EDB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD817F13-569A-4390-B9AD-864CB079EDB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD817F13-569A-4390-B9AD-864CB079EDB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD817F13-569A-4390-B9AD-864CB079EDB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9692DB6-9C23-4C46-9E39-FFEE1770946E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9692DB6-9C23-4C46-9E39-FFEE1770946E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9692DB6-9C23-4C46-9E39-FFEE1770946E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9692DB6-9C23-4C46-9E39-FFEE1770946E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9692DB6-9C23-4C46-9E39-FFEE1770946E} = {174AEC4C-7ED6-451D-B20B-6E0CDAAB974C}
 	EndGlobalSection
 EndGlobal

@@ -10,13 +10,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using GenericLib;
+using ExpressionLib;
 
 namespace ConsoleApp
 {
     class Program
     {
         //构造一个工作者
-        private static Worker worker = new Worker() { Name = "张三", Sex = "男", Age = 18, workType = WorkType.Management, Id = Guid.NewGuid().ToString().Replace("-", "") };
+        private static Worker worker = new Worker("张三") { Sex = "男", Age = 18, workType = WorkType.Management, Id = Guid.NewGuid().ToString().Replace("-", "") };
 
         private static WorkTwo work = new WorkTwo(worker);
 
@@ -47,7 +48,7 @@ namespace ConsoleApp
             #endregion
 
             #region 反射,详细使用见 Reflection
-            //Console.WriteLine("反射学习-----------------------------------");
+            Console.WriteLine("反射学习-----------------------------------");
             //var WorkRef = new WorkReflection();
             //var works = WorkRef.GetWorksByAttribute(worker).ToList();
             //foreach (var item in works)
@@ -56,14 +57,14 @@ namespace ConsoleApp
             //}
 
             ////实体反射
-            //var modelRef = new ModelReflection();
-            //var method = modelRef.GetMethods(worker, "ToString");
+            var modelRef = new ModelReflection();
+            var method = modelRef.GetMethods(worker, "ToString");
 
-            //var parameters = new Dictionary<string, object>();
-            //parameters.Add("Msg", "中华人民共和国");   //Key 注意大小写
-            //modelRef.MethodInvoke(method, parameters);
-            //modelRef.GetPropertieValue(worker, item => item.Id);
-            //Console.WriteLine("反射学习-----------------------------------");
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("Msg", "中华人民共和国");   //Key 注意大小写
+            modelRef.MethodInvoke(method, parameters);
+            modelRef.GetPropertieValue(worker, item => item.Id);
+            Console.WriteLine("反射学习-----------------------------------");
             #endregion
 
             #region 泛型学习
@@ -71,6 +72,9 @@ namespace ConsoleApp
             //var generic = new WorkGeneric<WorkTwo>();
             //generic.DoWork(work);
             //var workDefault = generic.GetDefault();
+            //var s = new WorkDelegate();
+            //s.ExpressionsFunc();
+
             //Console.WriteLine("泛型学习-----------------------------------");
             #endregion
 
@@ -85,6 +89,12 @@ namespace ConsoleApp
             //Console.WriteLine("多行程学习-----------------------------------");
             //WorksTask.TaskRun();
             //Console.WriteLine("多行程学习-----------------------------------");
+            #endregion
+
+            #region 表达式树
+
+            //var where = Where.True<Worker>().And(it => it.Name.Contains("aa"));
+
             #endregion
             Console.ReadKey();
         }

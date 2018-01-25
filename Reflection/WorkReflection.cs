@@ -88,6 +88,7 @@ namespace Reflection
         /// <returns></returns>
         public IEnumerable<Works> GetWorksByAttribute(Worker model)
         {
+
             var works = AppDomain.CurrentDomain.GetAssemblies()
                         .SelectMany(item => item.GetTypes())
                         .Where(item => item.IsDefined(typeof(WorkAttribute), true) && item.IsAbstract == false)

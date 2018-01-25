@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20A6C7A9-B099-464C-8BA6-954D2A02A343}</ProjectGuid>
+    <ProjectGuid>{CD817F13-569A-4390-B9AD-864CB079EDB5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reflection</RootNamespace>
-    <AssemblyName>Reflection</AssemblyName>
+    <RootNamespace>ExpressionLib</RootNamespace>
+    <AssemblyName>ExpressionLib</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,32 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CacheHelper.cs" />
-    <Compile Include="ModelReflection.cs" />
-    <Compile Include="WorkReflection.cs" />
+    <Compile Include="Where.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AbstractLib\AbstractLib.csproj">
-      <Project>{b4da96f1-e673-4d8b-9fac-e3dc161dc4cc}</Project>
-      <Name>AbstractLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AttributeClass\AttributeLib.csproj">
-      <Project>{50318601-d71f-4b25-8301-9b427c72375d}</Project>
-      <Name>AttributeLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExtendLib\ExtendLib.csproj">
-      <Project>{375bcbc1-af9d-4dac-a55e-15585a23bc23}</Project>
-      <Name>ExtendLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\InterfaceLib\InterfaceLib.csproj">
-      <Project>{04acc0ea-abcf-4194-9821-ab1ca14ffdf6}</Project>
-      <Name>InterfaceLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ModelLib\ModelLib.csproj">
       <Project>{6bcc362d-9319-4b73-a121-c09b6c94116d}</Project>
       <Name>ModelLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExpressionTreeVisualizer.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

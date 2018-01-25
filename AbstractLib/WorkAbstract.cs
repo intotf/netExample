@@ -28,10 +28,12 @@ namespace AbstractLib
 
         /// <summary>
         /// 派生类可以选择使用override 关键字而不是 new，将基类实现替换为它自己的实现
+        /// virtual  虚方法  必须包含实现 但是可以被重载
         /// </summary>
         /// <returns></returns>
         public virtual DateTime GetTime()
         {
+
             return DateTime.Now;
         }
 

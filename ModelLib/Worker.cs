@@ -12,11 +12,18 @@ namespace ModelLib
     /// </summary>
     public class Worker : WorkBase, IStringId
     {
+        /// <summary>
+        /// 不带参数的构造函数
+        /// </summary>
         public Worker()
         {
 
         }
 
+        /// <summary>
+        /// 带参数的构造函数
+        /// </summary>
+        /// <param name="Name"></param>
         public Worker(string Name)
         {
             this.Name = Name;

@@ -1,0 +1,59 @@
+abcd<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>接口参数</th>
+                <th>功能描述</th>
+                <th>响应消息</th>
+                <th>备注</th>
+                <th>登录认证</th>
+                <th>请求方法</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="">
+                <td>1</td>
+                <td>
+                    <strong>/Api/AppSoftRelease/GetLatestVersion</strong>
+                    <table class="no-border">
+                        <tbody>
+                            <tr>
+                                <td>package</td>
+                                <td class="type-name">String</td>
+                                <td class="keepword type-name">必填</td>
+
+                                <td></td>
+                                <td>App 包名</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>获取App 最新版本</td>
+                <td>{State:true处理成功，false处理失败,Msg:"失败提示消息",Data:{ AppSoftReleaseView }}</td>
+                <td></td>
+                <td>开发者</td>
+                <td>POST</td>
+            </tr>
+            <tr class="">
+                <td>2</td>
+                <td>
+                    <strong>/Api/Area/GetAll</strong>
+                </td>
+                <td>获取所有地区信息</td>
+                <td>{State:true处理成功，false处理失败,Msg:"失败提示消息",Data:{ List[Area] }}</td>
+                <td></td>
+                <td>开发者</td>
+                <td>GET</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
