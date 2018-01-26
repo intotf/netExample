@@ -14,8 +14,8 @@ namespace ExampleLib
             //线程安全字典例子
             ConcurrentDictionaryHelp.DemoRun();
 
-
-
+            //TimeSpanHelp
+            TimeSpanHelp.Instance().TimerDemo(TimeSpan.FromSeconds(3));
 
             Console.ReadKey();
         }
