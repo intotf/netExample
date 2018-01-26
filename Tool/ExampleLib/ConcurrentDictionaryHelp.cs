@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Reflection
+namespace ExampleLib
 {
     /// <summary>
     /// 安全线程缓存
     /// 可跨线程，只要进程不重启就不丢失。
     /// </summary>
-    public class CacheHelper<T> where T : class
+    public class ConcurrentDictionaryHelp<T> where T : class
     {
         /// <summary>
         /// object 缓存
@@ -99,34 +99,41 @@ namespace Reflection
             T value = default(T);
             return Caches.TryRemove(key, out value);
         }
+    }
 
+    /// <summary>
+    /// 线程安全字典例子
+    /// </summary>
+    public class ConcurrentDictionaryHelp
+    {
         /// <summary>
         /// 例子
         /// </summary>
-        public async static void TestRun()
+        public async static void DemoRun()
         {
+            Console.WriteLine("线程安全字典例子");
             var cacheKey = "test";
-            CacheHelper<string>.Add(cacheKey, "初始值");
+            ConcurrentDictionaryHelp<string>.Add(cacheKey, "初始值");
 
             //验证多线程对 ConcurrentDictionary 安全线程字典缓存做读写
             #region 方式一，使用 await,线程修改后，主线程获取的时候正常
             await Task.Factory.StartNew(() =>
             {
-                var taskValue = CacheHelper<string>.Get(cacheKey);
+                var taskValue = ConcurrentDictionaryHelp<string>.Get(cacheKey);
                 Console.WriteLine("Task 子线程序中，获取缓存内容 ：{0}", taskValue);
                 Console.WriteLine("Task 正在修改值");
-                var isupdate = CacheHelper<string>.Update(cacheKey, "Edit 后1");
+                var isupdate = ConcurrentDictionaryHelp<string>.Update(cacheKey, "Edit 后1");
             });
-            Console.WriteLine("子线程序修改后，缓存内容 ：{0}", CacheHelper<string>.Get(cacheKey));
+            Console.WriteLine("子线程序修改后，缓存内容 ：{0}", ConcurrentDictionaryHelp<string>.Get(cacheKey));
             #endregion
 
             #region 方式二，Task IsCompleted是否完成状态，如已完成就获取
             var task = Task.Factory.StartNew(() =>
             {
-                var taskValue = CacheHelper<string>.Get(cacheKey);
+                var taskValue = ConcurrentDictionaryHelp<string>.Get(cacheKey);
                 Console.WriteLine("Task 子线程序中，获取缓存内容 ：{0}", taskValue);
                 Console.WriteLine("Task 正在修改值");
-                CacheHelper<string>.Update(cacheKey, "Edit 后2");
+                ConcurrentDictionaryHelp<string>.Update(cacheKey, "Edit 后2");
             });
             var taskState = task.IsCompleted;
             while (!taskState)
@@ -134,14 +141,14 @@ namespace Reflection
                 taskState = task.IsCompleted;
                 if (taskState)
                 {
-                    Console.WriteLine("子线程序修改后，缓存内容 ：{0}", CacheHelper<string>.Get(cacheKey));
+                    Console.WriteLine("子线程序修改后，缓存内容 ：{0}", ConcurrentDictionaryHelp<string>.Get(cacheKey));
                 }
                 Thread.Sleep(1);
             }
             #endregion
-            var all = CacheHelper<string>.GetAllCaches();
-            Console.WriteLine(all.Count());
-            CacheHelper<string>.Delete(cacheKey);
+            var all = ConcurrentDictionaryHelp<string>.GetAllCaches();
+            Console.WriteLine(string.Join(Environment.NewLine, all.Select(item => item.Key + ":" + item.Value).ToArray()));
+            //ConcurrentDictionaryHelp<string>.Delete(cacheKey);
         }
     }
 }

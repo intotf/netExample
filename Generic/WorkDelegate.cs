@@ -13,6 +13,8 @@ namespace GenericLib
     /// </summary>
     public class WorkDelegate
     {
+
+        public delegate string strDelegate(string str, out string newstr);
         /// <summary>
         /// 自定义 声名一个无返回的委托
         /// </summary>

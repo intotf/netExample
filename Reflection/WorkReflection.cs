@@ -17,13 +17,26 @@ namespace Reflection
     public class WorkReflection
     {
         /// <summary>
+        /// 获Worker 的所有子类
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Works> GetWorksByBaseType(Worker model)
+        {
+            var works = AppDomain.CurrentDomain.GetAssemblies().SelectMany(item => item.GetTypes())
+                            .Where(item => item.IsAbstract == false && item.IsDefined(typeof(Works)))
+                            .Select(item => Activator.CreateInstance(item, model) as Works); ;
+            return works;
+        }
+
+
+        /// <summary>
         /// 获WorkAbstract 抽象类取所有继承者
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Works> GetWorksByAbstract(Worker model)
         {
             var works = AppDomain.CurrentDomain.GetAssemblies().SelectMany(item => item.GetTypes())
-               .Where(item => item.IsAbstract == false && item.IsValueType == false)
+               .Where(item => item.IsAbstract == false && item.IsValueType == false && item.IsSubclassOf(typeof(WorkAbstract)))
                .Select(item => Activator.CreateInstance(item, model) as Works);
             return works;
         }
@@ -69,7 +82,7 @@ namespace Reflection
         /// <returns></returns>
         public IEnumerable<Works> GetWorksByIWorkSort(Worker model)
         {
-            
+
             var works = this.GetWorksByIWork(model);
             var result = works.Select(item => new
                             {
@@ -88,7 +101,6 @@ namespace Reflection
         /// <returns></returns>
         public IEnumerable<Works> GetWorksByAttribute(Worker model)
         {
-
             var works = AppDomain.CurrentDomain.GetAssemblies()
                         .SelectMany(item => item.GetTypes())
                         .Where(item => item.IsDefined(typeof(WorkAttribute), true) && item.IsAbstract == false)

@@ -71,6 +71,7 @@
     <Content Include="HTMLPage.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="readme.txt" />
     <Content Include="珠海鱼女.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

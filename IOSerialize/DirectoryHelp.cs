@@ -41,7 +41,7 @@ namespace IOSerialize
         /// <returns></returns>
         public static string[] GetChildDir(string path)
         {
-            return Directory.GetDirectories(path);
+            return Directory.GetDirectories(path, "*.*", SearchOption.AllDirectories);
         }
 
         /// <summary>

@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CacheHelper.cs" />
     <Compile Include="ModelReflection.cs" />
     <Compile Include="WorkReflection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +64,9 @@
       <Project>{6bcc362d-9319-4b73-a121-c09b6c94116d}</Project>
       <Name>ModelLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

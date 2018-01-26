@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOSerialize", "IOSerialize\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thirdlibrary", "Tool\Thirdlibrary\Thirdlibrary.csproj", "{159A67AD-9372-4A95-A9B8-FD15C59A7AB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleLib", "Tool\ExampleLib\ExampleLib.csproj", "{449E5D49-B46A-40BB-9FB3-12589123F450}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{159A67AD-9372-4A95-A9B8-FD15C59A7AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{159A67AD-9372-4A95-A9B8-FD15C59A7AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{159A67AD-9372-4A95-A9B8-FD15C59A7AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449E5D49-B46A-40BB-9FB3-12589123F450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449E5D49-B46A-40BB-9FB3-12589123F450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449E5D49-B46A-40BB-9FB3-12589123F450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449E5D49-B46A-40BB-9FB3-12589123F450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,5 +95,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B9692DB6-9C23-4C46-9E39-FFEE1770946E} = {174AEC4C-7ED6-451D-B20B-6E0CDAAB974C}
 		{159A67AD-9372-4A95-A9B8-FD15C59A7AB0} = {174AEC4C-7ED6-451D-B20B-6E0CDAAB974C}
+		{449E5D49-B46A-40BB-9FB3-12589123F450} = {174AEC4C-7ED6-451D-B20B-6E0CDAAB974C}
 	EndGlobalSection
 EndGlobal
