@@ -118,7 +118,7 @@ namespace GenericLib
 
         #region 协逆变接口
         /// <summary>
-        /// 协变接口
+        /// 协变接口 ,带 Out ,只输出
         /// </summary>
         /// <typeparam name="outT"></typeparam>
         public interface IMyOut<out outT>
@@ -135,7 +135,7 @@ namespace GenericLib
         }
 
         /// <summary>
-        /// 逆变接口
+        /// 逆变接口,带 in 只输入不出
         /// </summary>
         /// <typeparam name="inT"></typeparam>
         public interface IMyIn<in inT>

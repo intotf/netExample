@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GenericLib;
 using ExpressionLib;
+using System.Threading;
 
 namespace ConsoleApp
 {
@@ -96,6 +97,12 @@ namespace ConsoleApp
             //var where = Where.True<Worker>().And(it => it.Name.Contains("aa"));
 
             #endregion
+
+            #region 线程安全缓存
+            CacheHelper<Worker>.Add(worker.Id, worker);
+            var woreks = CacheHelper<Worker>.GetAllCaches();
+            CacheHelper<string>.TestRun();
+            #endregion
             Console.ReadKey();
         }
 
@@ -108,7 +115,6 @@ namespace ConsoleApp
             var RunState = await model.OnWorkAsync();
             Console.WriteLine("RunTask 运行结果：{0}", RunState);
         }
-
 
     }
 }
