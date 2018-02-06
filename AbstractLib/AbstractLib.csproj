@@ -42,9 +42,7 @@
     <Compile Include="WorkAbstract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkOne.cs" />
-    <Compile Include="WorkParallel.cs" />
     <Compile Include="Works.cs" />
-    <Compile Include="WorksTask.cs" />
     <Compile Include="WorkTwo.cs" />
   </ItemGroup>
   <ItemGroup>

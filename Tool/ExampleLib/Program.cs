@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 
 namespace ExampleLib
 {
@@ -11,6 +15,12 @@ namespace ExampleLib
     {
         static void Main(string[] args)
         {
+            #region 同时执行两种检测网络是否可上网
+            //var taskList = new List<Task>();
+            //taskList.Add(Task.Factory.StartNew(NetworkLine.RunDemo1));
+            //taskList.Add(Task.Factory.StartNew(NetworkLine.RunDemo2));
+            //Task.WaitAll(taskList.ToArray());
+            #endregion
             //线程安全字典例子
             //ConcurrentDictionaryHelp.DemoRun();
 

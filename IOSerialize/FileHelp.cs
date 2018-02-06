@@ -98,7 +98,7 @@ namespace IOSerialize
             }
             var fileStream = File.OpenRead(this._file);
             //var bytes = new byte[fileStream.Length];
-            //fileStream.Read(bytes, 0, (int)fileStream.Length);
+            //fileStream.Read(bytes, 0, bytes.Length);
             //var newStream = new MemoryStream(bytes);
             var newStream = new MemoryStream();
             fileStream.Position = 0;    //必需要重置流的位置

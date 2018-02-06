@@ -1,4 +1,5 @@
-﻿using ModelLib;
+﻿using AbstractLib;
+using ModelLib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AbstractLib
+namespace Thirdlibrary
 {
     /// <summary>
     /// 并行操作

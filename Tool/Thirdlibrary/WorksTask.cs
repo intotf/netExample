@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractLib
+namespace Thirdlibrary
 {
     /// <summary>
     /// Task 多线程学习
