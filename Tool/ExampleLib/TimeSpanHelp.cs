@@ -46,6 +46,7 @@ namespace ExampleLib
         }
         /// <summary>
         /// Timer 定时处理任务
+        /// System.Timers.Timer 是基于服务
         /// </summary>
         /// <param name="interval">间隔时间,单位</param>
         public void TimerDemo(TimeSpan interval)
@@ -61,7 +62,7 @@ namespace ExampleLib
                 }, null, dueTime, interval);
             }
         }
-
+        
         /// <summary>
         /// 获取两个时间的时间差
         /// </summary>
