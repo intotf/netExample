@@ -234,7 +234,7 @@ namespace RegexApp
             CommonList = newList;
             XmlHelper.Save<CommonModel>(newList);
 
-            MessageBox.Show("保存成功.");
+            MessageBox.Show("删除成功.");
         }
 
         /// <summary>
