@@ -163,7 +163,7 @@
             this.groupBox4.Controls.Add(this.rtbRegex);
             this.groupBox4.Location = new System.Drawing.Point(525, 13);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(228, 428);
+            this.groupBox4.Size = new System.Drawing.Size(228, 460);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "正则说明";
@@ -185,7 +185,7 @@
             // 
             // btSaveRegex
             // 
-            this.btSaveRegex.Location = new System.Drawing.Point(147, 399);
+            this.btSaveRegex.Location = new System.Drawing.Point(147, 431);
             this.btSaveRegex.Name = "btSaveRegex";
             this.btSaveRegex.Size = new System.Drawing.Size(75, 23);
             this.btSaveRegex.TabIndex = 1;
@@ -197,7 +197,7 @@
             // 
             this.rtbRegex.Location = new System.Drawing.Point(7, 53);
             this.rtbRegex.Name = "rtbRegex";
-            this.rtbRegex.Size = new System.Drawing.Size(215, 341);
+            this.rtbRegex.Size = new System.Drawing.Size(215, 372);
             this.rtbRegex.TabIndex = 0;
             this.rtbRegex.Text = "";
             // 
@@ -209,7 +209,7 @@
             this.lbZoom.ForeColor = System.Drawing.Color.Black;
             this.lbZoom.Location = new System.Drawing.Point(513, 0);
             this.lbZoom.Name = "lbZoom";
-            this.lbZoom.Size = new System.Drawing.Size(7, 452);
+            this.lbZoom.Size = new System.Drawing.Size(7, 480);
             this.lbZoom.TabIndex = 6;
             this.lbZoom.Text = ">";
             this.lbZoom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
