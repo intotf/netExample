@@ -47,7 +47,6 @@
             this.btSaveText = new System.Windows.Forms.Button();
             this.cbIsCase = new System.Windows.Forms.CheckBox();
             this.cbIsMultiple = new System.Windows.Forms.CheckBox();
-            this.cbIsSingle = new System.Windows.Forms.CheckBox();
             this.cbIsAll = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -60,7 +59,6 @@
             // 
             this.groupBox1.Controls.Add(this.cbIsAll);
             this.groupBox1.Controls.Add(this.cbIsMultiple);
-            this.groupBox1.Controls.Add(this.cbIsSingle);
             this.groupBox1.Controls.Add(this.cbIsCase);
             this.groupBox1.Controls.Add(this.btSaveText);
             this.groupBox1.Controls.Add(this.tbText);
@@ -255,26 +253,20 @@
             this.cbIsCase.TabIndex = 2;
             this.cbIsCase.Text = "不区分大小写";
             this.cbIsCase.UseVisualStyleBackColor = true;
+            this.cbIsCase.CheckedChanged += new System.EventHandler(this.tbRegex_TextChanged);
             // 
             // cbIsMultiple
             // 
             this.cbIsMultiple.AutoSize = true;
+            this.cbIsMultiple.Checked = true;
+            this.cbIsMultiple.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbIsMultiple.Location = new System.Drawing.Point(181, 173);
             this.cbIsMultiple.Name = "cbIsMultiple";
             this.cbIsMultiple.Size = new System.Drawing.Size(48, 16);
             this.cbIsMultiple.TabIndex = 3;
             this.cbIsMultiple.Text = "多行";
             this.cbIsMultiple.UseVisualStyleBackColor = true;
-            // 
-            // cbIsSingle
-            // 
-            this.cbIsSingle.AutoSize = true;
-            this.cbIsSingle.Location = new System.Drawing.Point(243, 173);
-            this.cbIsSingle.Name = "cbIsSingle";
-            this.cbIsSingle.Size = new System.Drawing.Size(48, 16);
-            this.cbIsSingle.TabIndex = 3;
-            this.cbIsSingle.Text = "单行";
-            this.cbIsSingle.UseVisualStyleBackColor = true;
+            this.cbIsMultiple.CheckedChanged += new System.EventHandler(this.tbRegex_TextChanged);
             // 
             // cbIsAll
             // 
@@ -287,6 +279,7 @@
             this.cbIsAll.TabIndex = 4;
             this.cbIsAll.Text = "全部";
             this.cbIsAll.UseVisualStyleBackColor = true;
+            this.cbIsAll.CheckedChanged += new System.EventHandler(this.tbRegex_TextChanged);
             // 
             // Main
             // 
@@ -335,7 +328,6 @@
         private System.Windows.Forms.Button btSaveText;
         private System.Windows.Forms.CheckBox cbIsCase;
         private System.Windows.Forms.CheckBox cbIsMultiple;
-        private System.Windows.Forms.CheckBox cbIsSingle;
         private System.Windows.Forms.CheckBox cbIsAll;
     }
 }

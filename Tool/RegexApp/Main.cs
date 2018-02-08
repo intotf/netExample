@@ -125,14 +125,38 @@ namespace RegexApp
             try
             {
                 var result = new List<ResultModel>();
+                var options = RegexOptions.None;
+                //不区分大小写
+                if (this.cbIsCase.Checked)
+                {
+                    options = RegexOptions.IgnoreCase;
+                }
+
+                //不钩选指定单行模式
+                if (!this.cbIsMultiple.Checked)
+                {
+                    options = RegexOptions.Singleline;
+                }
+
+                //不区分大小写 + 多行模式
+                if (this.cbIsCase.Checked && this.cbIsMultiple.Checked)
+                {
+                    options = RegexOptions.Multiline | RegexOptions.IgnoreCase;
+                }
+
+
                 if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(regText))
                 {
-                    var reg = new Regex(regText);
+                    var reg = new Regex(regText, options);
                     var matches = reg.Matches(text);
                     var i = 0;
                     foreach (Match item in matches)
                     {
                         result.Add(new ResultModel(++i, item.Value));
+                        if (!cbIsAll.Checked)
+                        {
+                            break;
+                        }
                     }
                 }
                 this.dgvResult.DataSource = result.ToArray();
