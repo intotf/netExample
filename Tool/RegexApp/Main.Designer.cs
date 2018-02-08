@@ -44,6 +44,11 @@
             this.lbZoom = new System.Windows.Forms.Label();
             this.dgvResult = new System.Windows.Forms.DataGridView();
             this.btDeleteCommon = new System.Windows.Forms.Button();
+            this.btSaveText = new System.Windows.Forms.Button();
+            this.cbIsCase = new System.Windows.Forms.CheckBox();
+            this.cbIsMultiple = new System.Windows.Forms.CheckBox();
+            this.cbIsSingle = new System.Windows.Forms.CheckBox();
+            this.cbIsAll = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.geResult.SuspendLayout();
@@ -53,11 +58,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbIsAll);
+            this.groupBox1.Controls.Add(this.cbIsMultiple);
+            this.groupBox1.Controls.Add(this.cbIsSingle);
+            this.groupBox1.Controls.Add(this.cbIsCase);
+            this.groupBox1.Controls.Add(this.btSaveText);
             this.groupBox1.Controls.Add(this.tbText);
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(495, 168);
+            this.groupBox1.Size = new System.Drawing.Size(495, 200);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "文本内容区";
@@ -67,6 +77,7 @@
             this.tbText.Location = new System.Drawing.Point(6, 20);
             this.tbText.Multiline = true;
             this.tbText.Name = "tbText";
+            this.tbText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbText.Size = new System.Drawing.Size(483, 142);
             this.tbText.TabIndex = 0;
             this.tbText.TextChanged += new System.EventHandler(this.tbRegex_TextChanged);
@@ -79,7 +90,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cbCommon);
             this.groupBox2.Controls.Add(this.tbRegex);
-            this.groupBox2.Location = new System.Drawing.Point(12, 186);
+            this.groupBox2.Location = new System.Drawing.Point(12, 218);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(495, 77);
             this.groupBox2.TabIndex = 2;
@@ -139,7 +150,7 @@
             // geResult
             // 
             this.geResult.Controls.Add(this.dgvResult);
-            this.geResult.Location = new System.Drawing.Point(12, 269);
+            this.geResult.Location = new System.Drawing.Point(12, 301);
             this.geResult.Name = "geResult";
             this.geResult.Size = new System.Drawing.Size(495, 172);
             this.geResult.TabIndex = 3;
@@ -223,12 +234,66 @@
             this.btDeleteCommon.UseVisualStyleBackColor = true;
             this.btDeleteCommon.Click += new System.EventHandler(this.btDeleteCommon_Click);
             // 
+            // btSaveText
+            // 
+            this.btSaveText.Location = new System.Drawing.Point(420, 168);
+            this.btSaveText.Name = "btSaveText";
+            this.btSaveText.Size = new System.Drawing.Size(69, 23);
+            this.btSaveText.TabIndex = 1;
+            this.btSaveText.Text = "保存文本";
+            this.btSaveText.UseVisualStyleBackColor = true;
+            this.btSaveText.Click += new System.EventHandler(this.btSaveText_Click);
+            // 
+            // cbIsCase
+            // 
+            this.cbIsCase.AutoSize = true;
+            this.cbIsCase.Checked = true;
+            this.cbIsCase.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbIsCase.Location = new System.Drawing.Point(71, 173);
+            this.cbIsCase.Name = "cbIsCase";
+            this.cbIsCase.Size = new System.Drawing.Size(96, 16);
+            this.cbIsCase.TabIndex = 2;
+            this.cbIsCase.Text = "不区分大小写";
+            this.cbIsCase.UseVisualStyleBackColor = true;
+            // 
+            // cbIsMultiple
+            // 
+            this.cbIsMultiple.AutoSize = true;
+            this.cbIsMultiple.Location = new System.Drawing.Point(181, 173);
+            this.cbIsMultiple.Name = "cbIsMultiple";
+            this.cbIsMultiple.Size = new System.Drawing.Size(48, 16);
+            this.cbIsMultiple.TabIndex = 3;
+            this.cbIsMultiple.Text = "多行";
+            this.cbIsMultiple.UseVisualStyleBackColor = true;
+            // 
+            // cbIsSingle
+            // 
+            this.cbIsSingle.AutoSize = true;
+            this.cbIsSingle.Location = new System.Drawing.Point(243, 173);
+            this.cbIsSingle.Name = "cbIsSingle";
+            this.cbIsSingle.Size = new System.Drawing.Size(48, 16);
+            this.cbIsSingle.TabIndex = 3;
+            this.cbIsSingle.Text = "单行";
+            this.cbIsSingle.UseVisualStyleBackColor = true;
+            // 
+            // cbIsAll
+            // 
+            this.cbIsAll.AutoSize = true;
+            this.cbIsAll.Checked = true;
+            this.cbIsAll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbIsAll.Location = new System.Drawing.Point(9, 173);
+            this.cbIsAll.Name = "cbIsAll";
+            this.cbIsAll.Size = new System.Drawing.Size(48, 16);
+            this.cbIsAll.TabIndex = 4;
+            this.cbIsAll.Text = "全部";
+            this.cbIsAll.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(765, 453);
+            this.ClientSize = new System.Drawing.Size(765, 481);
             this.Controls.Add(this.lbZoom);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.geResult);
@@ -267,6 +332,11 @@
         private System.Windows.Forms.Label lbZoom;
         private System.Windows.Forms.DataGridView dgvResult;
         private System.Windows.Forms.Button btDeleteCommon;
+        private System.Windows.Forms.Button btSaveText;
+        private System.Windows.Forms.CheckBox cbIsCase;
+        private System.Windows.Forms.CheckBox cbIsMultiple;
+        private System.Windows.Forms.CheckBox cbIsSingle;
+        private System.Windows.Forms.CheckBox cbIsAll;
     }
 }
 

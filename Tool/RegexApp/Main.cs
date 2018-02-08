@@ -14,10 +14,19 @@ namespace RegexApp
 {
     public partial class Main : Form
     {
+        /// <summary>
+        /// 获取正则标准
+        /// </summary>
         private IEnumerable<RegexModel> RegexList = XmlHelper.GetList<RegexModel>();
 
+        /// <summary>
+        /// 获取常用的正则
+        /// </summary>
         private IEnumerable<CommonModel> CommonList = XmlHelper.GetList<CommonModel>();
 
+        /// <summary>
+        /// 文本路径
+        /// </summary>
         private readonly string textPath = @"data\text.txt";
 
         public Main()
@@ -213,6 +222,17 @@ namespace RegexApp
         {
             var model = (CommonModel)((ComboBox)sender).SelectedItem;
             this.tbRegex.Text = model.RegexTxt;
+        }
+
+        /// <summary>
+        /// 保存文本区内容
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btSaveText_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText(textPath, this.tbText.Text, Encoding.UTF8);
+            MessageBox.Show("保存文本内容成功.");
         }
     }
 }

@@ -1,28 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
   <Data>
-    <RegexTxt>^[0-9]*$</RegexTxt>
-    <Describe>验证是否为数字</Describe>
-  </Data>
-  <Data>
     <RegexTxt>(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}</RegexTxt>
-    <Describe>查询手机号码</Describe>
+    <Describe>匹配手机号码</Describe>
   </Data>
   <Data>
     <RegexTxt>[a-zA-z]+://[^\s]*</RegexTxt>
-    <Describe>查找所有网址</Describe>
-  </Data>
-  <Data>
-    <RegexTxt>([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</RegexTxt>
-    <Describe>查看不带Http:// 的域名</Describe>
+    <Describe>匹配不带Http:// 的域名</Describe>
   </Data>
   <Data>
     <RegexTxt>\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}</RegexTxt>
-    <Describe>查询邮箱</Describe>
+    <Describe>匹配邮箱</Describe>
   </Data>
   <Data>
     <RegexTxt>[0-9]</RegexTxt>
-    <Describe>查询所有数字</Describe>
+    <Describe>匹配所有数字</Describe>
   </Data>
   <Data>
     <RegexTxt>[\u4e00-\u9fa5]+</RegexTxt>
@@ -59,5 +51,25 @@
   <Data>
     <RegexTxt>(13\d|14[579]|15[^4\D]|17[^49\D]|18\d)\d{8}</RegexTxt>
     <Describe>匹配手机号</Describe>
+  </Data>
+  <Data>
+    <RegexTxt>\d{3}-\d{8}|\d{4}-\d{7}</RegexTxt>
+    <Describe>匹配国内电话号码</Describe>
+  </Data>
+  <Data>
+    <RegexTxt>[a-zA-Z][a-zA-Z0-9_]{4,15}</RegexTxt>
+    <Describe>匹配帐号(字母开头，允许5-16字节，允许字母数字下划线)</Describe>
+  </Data>
+  <Data>
+    <RegexTxt>\d{4}-\d{1,2}-\d{1,2}</RegexTxt>
+    <Describe>匹配日期2(年-月-日)</Describe>
+  </Data>
+  <Data>
+    <RegexTxt>([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x|X][m|M][l|L]</RegexTxt>
+    <Describe>匹配xml 文件</Describe>
+  </Data>
+  <Data>
+    <RegexTxt>\n\s*\r</RegexTxt>
+    <Describe>匹配空白行</Describe>
   </Data>
 </Root>
