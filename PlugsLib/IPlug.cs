@@ -15,11 +15,5 @@ namespace PlugsLib
         /// 发送数据
         /// </summary>
         void OnSend();
-
-        void Sub();
-
-        void UnSub();
-
-
     }
 }

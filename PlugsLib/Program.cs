@@ -74,7 +74,6 @@ namespace PlugsLib
                 item.OnNext("22");
             }
 
-
             var plugs = new AcsPlug();
             plugs.LoadPlugs<PlugOne>();
             plugs.LoadPlugs<PlugTwo>();

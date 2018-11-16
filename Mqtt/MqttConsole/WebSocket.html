@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<script src="js/mqttws31.min.js"></script>
+<script>
+    client = new Paho.MQTT.Client("127.0.0.1", 8083, "WebSocket");//建立客户端实例
+    client.connect({ onSuccess: onConnect });//连接服务器并注册连接成功处理事件
+    function onConnect() {
+        console.log("连接");
+        client.subscribe("world");//订阅主题
+    }
+    client.onConnectionLost = onConnectionLost;//注册连接断开处理事件
+    client.onMessageArrived = onMessageArrived;//注册消息接收处理事件
+
+    function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+            console.log("onConnectionLost:" + responseObject.errorMessage);
+            console.log("连接已断开");
+        }
+    }
+
+    function onMessageArrived(message) {
+        document.getElementById("msg").append(message.payloadString);
+        console.log("收到消息:" + message.payloadString);
+    }
+    
+    function send() {
+        //发送消息
+        message = new Paho.MQTT.Message("hello");
+        message.destinationName = "world";
+        client.send(message);
+    }
+</script>
+<body>
+    <div id="msg">
+    </div>
+    <input type="button" value="发送消息" onclick="send()" />
+</body>
+</html>

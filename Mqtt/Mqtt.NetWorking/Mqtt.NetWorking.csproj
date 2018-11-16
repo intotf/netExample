@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9A22B208-94DC-4FA8-B455-12257E37B698}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mqtt.NetWorking</RootNamespace>
+    <AssemblyName>Mqtt.NetWorking</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="StackExchange.Redis, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\StackExchange.Redis.1.2.4\lib\net45\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api.cs" />
+    <Compile Include="ByteConverter.cs" />
+    <Compile Include="EmqttdClient.cs" />
+    <Compile Include="Endians.cs" />
+    <Compile Include="IRemoteClient.cs" />
+    <Compile Include="ITimeoutRequest.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="Mode.cs" />
+    <Compile Include="MqttAcl.cs" />
+    <Compile Include="MqttPackage.cs" />
+    <Compile Include="MqttPackageCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleTopic.cs" />
+    <Compile Include="Tasks\ITaskSetter.cs" />
+    <Compile Include="Tasks\TaskSetter.cs" />
+    <Compile Include="Tasks\TaskSetterTable.cs" />
+    <Compile Include="Topic.cs" />
+    <Compile Include="Utf8Encode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mqtt.Common\Mqtt.Common.csproj">
+      <Project>{50acc3a4-c741-42e6-b2cc-a7134884ca7f}</Project>
+      <Name>Mqtt.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mqtt.Redis\Mqtt.Redis.csproj">
+      <Project>{19d131e2-c77c-422b-9559-739faf6293c2}</Project>
+      <Name>Mqtt.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Paho.MqttDotnet\Paho.MqttDonet\Paho.MqttDotnet.csproj">
+      <Project>{95f16b8e-fde5-4770-bf1d-07d9915c00c0}</Project>
+      <Name>Paho.MqttDotnet</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

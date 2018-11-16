@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{3599B6B9-7D2F-48D2-B1B1-19B8CFBE4F94}"
 EndProject
@@ -233,6 +233,8 @@ Global
 		{9A22B208-94DC-4FA8-B455-12257E37B698} = {8571F3F1-8341-4ED5-957B-2526B94AACEF}
 		{50ACC3A4-C741-42E6-B2CC-A7134884CA7F} = {8571F3F1-8341-4ED5-957B-2526B94AACEF}
 		{19D131E2-C77C-422B-9559-739FAF6293C2} = {8571F3F1-8341-4ED5-957B-2526B94AACEF}
-		{7C228D04-E2A6-4028-9C74-C1C5EA381715} = {174AEC4C-7ED6-451D-B20B-6E0CDAAB974C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC427DB1-0048-464D-9268-15B23E091ED6}
 	EndGlobalSection
 EndGlobal

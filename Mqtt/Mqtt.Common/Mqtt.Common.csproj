@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{50ACC3A4-C741-42E6-B2CC-A7134884CA7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mqtt.Common</RootNamespace>
+    <AssemblyName>Mqtt.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BCL\AsyncRoot.cs" />
+    <Compile Include="BCL\Guid16.cs" />
+    <Compile Include="BCL\HttpApiClient.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Config\ConfigSectionAttribute.cs" />
+    <Compile Include="Config\MqttAclConfigSection.cs" />
+    <Compile Include="Config\MqttClientConfigSection.cs" />
+    <Compile Include="Extends\System.Linq.Expressions\Operator.cs" />
+    <Compile Include="Extends\System.Linq.Expressions\Where.cs" />
+    <Compile Include="Extends\System.Linq\IQueryableExtend.cs" />
+    <Compile Include="Extends\System\DateTimeExtened.cs" />
+    <Compile Include="Extends\System\DoubleExtend.cs" />
+    <Compile Include="Extends\System\EnumExtend.cs" />
+    <Compile Include="Extends\System\IEnumerableEntend.cs" />
+    <Compile Include="Extends\System\NullableExtend.cs" />
+    <Compile Include="Extends\System\ObjectExtend.cs" />
+    <Compile Include="Extends\System\StringExtend.cs" />
+    <Compile Include="Extends\System\TimeSpanExtened.cs" />
+    <Compile Include="Extends\System\UriExtend.cs" />
+    <Compile Include="HttpContents\ApplicationJsonContent.cs" />
+    <Compile Include="HttpContents\XFormUrlEncodedContent.cs" />
+    <Compile Include="Menus\FilterNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Menus\MenuBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Menus\MenuNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Menus\PermissionNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Menus\PermissionProcesser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\Method.cs" />
+    <Compile Include="Reflection\Property.cs" />
+    <Compile Include="Res\FileRes.cs" />
+    <Compile Include="Res\FtpClient.cs" />
+    <Compile Include="Res\ImageRes.cs" />
+    <Compile Include="Res\MarkPosition.cs" />
+    <Compile Include="Res\PostedFile.cs" />
+    <Compile Include="Res\ScaleMode.cs" />
+    <Compile Include="Res\ScaleOption.cs" />
+    <Compile Include="Utility\AbsoluteCache.cs" />
+    <Compile Include="Utility\ConsistentHash.cs" />
+    <Compile Include="Utility\Converter.cs" />
+    <Compile Include="Utility\Converts\ArrayConvert.cs" />
+    <Compile Include="Utility\Converts\DictionaryConvert.cs" />
+    <Compile Include="Utility\Converts\DynamicObjectConvert.cs" />
+    <Compile Include="Utility\Converts\ListConvert.cs" />
+    <Compile Include="Utility\Converts\NoConvert.cs" />
+    <Compile Include="Utility\Converts\NotSupportedConvert.cs" />
+    <Compile Include="Utility\Converts\NullableConvert.cs" />
+    <Compile Include="Utility\Converts\NullConvert.cs" />
+    <Compile Include="Utility\Converts\SimpleContert.cs" />
+    <Compile Include="Utility\Debugger.cs" />
+    <Compile Include="Utility\EMail.cs" />
+    <Compile Include="Utility\Encryption.cs" />
+    <Compile Include="Utility\IConvert.cs" />
+    <Compile Include="Utility\JsonSerializer.cs" />
+    <Compile Include="Utility\Logger.cs" />
+    <Compile Include="Utility\Mapper.cs" />
+    <Compile Include="Utility\ValidCode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\Mqtt.Common.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\Mqtt.Common.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Mqtt.Common.dll" />
+    <Content Include="obj\Debug\Mqtt.Common.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
