@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>NET45</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SocketClient.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Net" />
+  </ItemGroup>
+
+</Project>
