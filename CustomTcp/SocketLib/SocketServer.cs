@@ -21,8 +21,6 @@ namespace SocketLib
         {
         }
 
-        public List<SocketClient>
 
-        
     }
 }
