@@ -53,6 +53,7 @@ namespace FileSync
             //var LRFiles = leftFiles.Except(rightFiles).Select(item => Path.Combine(Config.SourcePath, item));
             //Logger.Default.LogInformation(string.Format("共有 {0} 文件需要从监控文件夹复制到目标.", LRFiles.Count()));
             //this.CopyToTarget(LRFiles);
+
             Directory.EnumerateFiles(Config.SourcePath, Config.FilterType, searchOption).AsParallel().ForAll(item =>
             {
                 CopyToTarget(item);
@@ -69,11 +70,29 @@ namespace FileSync
             watcher.Filter = Config.FilterType;
             watcher.IncludeSubdirectories = Config.IncludeSubdir;
             watcher.EnableRaisingEvents = true;
-            watcher.NotifyFilter = NotifyFilters.Attributes | NotifyFilters.CreationTime | NotifyFilters.DirectoryName | NotifyFilters.FileName | NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.Security | NotifyFilters.Size;
+            watcher.NotifyFilter = NotifyFilters.Attributes | NotifyFilters.CreationTime |
+                                    NotifyFilters.DirectoryName | NotifyFilters.FileName |
+                                    NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.Security |
+                                    NotifyFilters.Size;
             //设置监听的路径
             watcher.Path = Config.SourcePath;
             watcher.Changed += Watcher_Changed;
+            if (this.Config.IsAyncDelete)
+            {
+                watcher.Deleted += Watcher_Deleted;
+            }
             watcher.EndInit();
+        }
+
+        /// <summary>
+        /// 文件删除事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Watcher_Deleted(object sender, FileSystemEventArgs e)
+        {
+            var filePath = GetTargetPath(e.FullPath);
+            fileTimer.Invoke(e.FullPath, () => DeleteFile(filePath));
         }
 
         /// <summary>
@@ -87,6 +106,33 @@ namespace FileSync
             {
                 fileTimer.Invoke(e.FullPath, () => CopyToTarget(e.FullPath));
             }
+        }
+
+        /// <summary>
+        /// 删除目标文件
+        /// </summary>
+        /// <param name="targetFile">文件路径</param>
+        public void DeleteFile(string filePath)
+        {
+            try
+            {
+                File.Delete(filePath);
+                Logger.Default.LogInformation(string.Format("Delete:{0}", filePath));
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.LogError(string.Format("Delete:{0},Msg:{1}", filePath, ex.Message));
+            }
+        }
+
+        /// <summary>
+        /// 根据监控路径转换为目标路径
+        /// </summary>
+        /// <param name="sourceFile">监控路径</param>
+        /// <returns></returns>
+        private string GetTargetPath(string sourceFile)
+        {
+            return Path.Combine(Config.TargetPath, Path.GetFullPath(sourceFile).Substring(Config.SourcePath.Length));
         }
 
         #region 复制文件
@@ -127,15 +173,13 @@ namespace FileSync
             }
         }
 
-
-
         /// <summary>
         /// 从源文件目录复制到目标文件
         /// </summary>
         /// <param name="sourceFile"></param>
         public void CopyToTarget(string sourceFile)
         {
-            var targetFile = Path.Combine(Config.TargetPath, Path.GetFullPath(sourceFile).Substring(Config.SourcePath.Length));
+            var targetFile = this.GetTargetPath(sourceFile);
             this.CopyFile(sourceFile, targetFile);
         }
 

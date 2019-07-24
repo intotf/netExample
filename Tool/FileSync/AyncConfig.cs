@@ -40,5 +40,10 @@ namespace FileSync
         /// 同步延迟秒数,默认 3秒
         /// </summary>
         public int DelaySeconds { get; set; } = 3;
+
+        /// <summary>
+        /// 是否同步删除
+        /// </summary>
+        public bool IsAyncDelete { get; set; } = false;
     }
 }

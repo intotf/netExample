@@ -3,16 +3,36 @@
     "SourcePath": "E:\\github\\netExample\\Tool\\FileSync\\test\\a\\",
     "TargetPath": "E:\\github\\netExample\\Tool\\FileSync\\test\\b\\",
     "SyncOne": true,
-    "FilterType": "*.*",
+    "FilterType": "新建*",
     "IncludeSubdir": true,
-    "DelaySeconds": 3
+    "DelaySeconds": 3,
+    "IsAyncDelete": true
   },
   {
-    "SourcePath": "E:\\github\\netExample\\Tool\\FileSync\\test\\c\\",
+    "SourcePath": "E:\\github\\netExample\\Tool\\FileSync\\test\\a\\",
+    "TargetPath": "E:\\github\\netExample\\Tool\\FileSync\\test\\c\\",
+    "SyncOne": true,
+    "FilterType": "*.???",
+    "IncludeSubdir": true,
+    "DelaySeconds": 3,
+    "IsAyncDelete": true
+  },
+  {
+    "SourcePath": "E:\\github\\netExample\\Tool\\FileSync\\test\\a\\",
     "TargetPath": "E:\\github\\netExample\\Tool\\FileSync\\test\\d\\",
     "SyncOne": true,
-    "FilterType": "*.*",
+    "FilterType": "*.rtf",
     "IncludeSubdir": true,
-    "DelaySeconds": 3
+    "DelaySeconds": 3,
+    "IsAyncDelete": true
+  },
+  {
+    "SourcePath": "E:\\github\\netExample\\Tool\\FileSync\\test\\a\\",
+    "TargetPath": "E:\\github\\netExample\\Tool\\FileSync\\test\\e\\",
+    "SyncOne": true,
+    "FilterType": "*Microsoft*.*",
+    "IncludeSubdir": true,
+    "DelaySeconds": 3,
+    "IsAyncDelete": true
   }
 ]
