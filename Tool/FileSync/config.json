@@ -1,0 +1,18 @@
+﻿[
+  {
+    "SourcePath": "E:\\github\\netExample\\Tool\\FileSync\\test\\a\\",
+    "TargetPath": "E:\\github\\netExample\\Tool\\FileSync\\test\\b\\",
+    "SyncOne": true,
+    "FilterType": "*.*",
+    "IncludeSubdir": true,
+    "DelaySeconds": 3
+  },
+  {
+    "SourcePath": "E:\\github\\netExample\\Tool\\FileSync\\test\\c\\",
+    "TargetPath": "E:\\github\\netExample\\Tool\\FileSync\\test\\d\\",
+    "SyncOne": true,
+    "FilterType": "*.*",
+    "IncludeSubdir": true,
+    "DelaySeconds": 3
+  }
+]
