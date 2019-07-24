@@ -156,3 +156,4 @@ $RECYCLE.BIN/
 .DS_Store
 /.vs/netExample/v15/Server/sqlite3
 /.vs
+/Tool/FileSync/test
