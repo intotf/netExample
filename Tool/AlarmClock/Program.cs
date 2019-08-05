@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jiguang.JPush;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace AlarmClock
     static class Program
     {
         public static int AlarmShowTime = int.Parse(System.Configuration.ConfigurationManager.AppSettings["AlarmShowTime"]);
+
+
 
         /// <summary>
         /// 应用程序的主入口点。

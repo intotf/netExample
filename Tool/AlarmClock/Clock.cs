@@ -85,7 +85,7 @@ namespace AlarmClock
         {
             this.timer.Dispose();
             this.CallBackAction.Invoke(this.Id);
-            Console.WriteLine(DateTime.Now);
+            JPusher.PushMsg(this);
         }
     }
 }

@@ -272,6 +272,11 @@ namespace AlarmClock
             MessageBox.Show("保存成功");
         }
 
+        /// <summary>
+        /// 删除按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)//按钮列坐标
