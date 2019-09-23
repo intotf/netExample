@@ -9,11 +9,15 @@ using System.Threading.Tasks;
 
 namespace BenchmarkTest
 {
-    public class Program
+    public partial class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(DateTime.Now);
+
+            //直接调用 Program.Partial 子类方法
+            Test();
+
+            Console.WriteLine(DateTime.Now.AddDays(1).AddHours(21));
             BenchmarkRunner.Run<TestMd5>();
             Console.ReadLine();
         }
