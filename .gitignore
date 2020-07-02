@@ -157,3 +157,5 @@ $RECYCLE.BIN/
 /.vs/netExample/v15/Server/sqlite3
 /.vs
 /Tool/FileSync/test
+bin
+obj
