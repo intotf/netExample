@@ -1,0 +1,22 @@
+[
+  {
+    "SourcePath": "D:\\temp\\SourcePath", /* 需要备份的目录 */
+    "TargetPath": "D:\\temp\\TargetPath", /* 备份后存放目录 */
+    "FileFormat": "yyyyMMddhhmm", /* 文件名格式如：202007071604 */
+    "SyncOne": true, /* 是否立即执行一次 */
+    "IncludeSubdir": true, /* 是否包含子目录 */
+    "ExecutionTime": "03:00:00", /*自动执行时间 时:分:秒,默认凌晨3点 */
+    "ZipLevel": 9, /*压缩等级 0-9 越多压缩越小*/
+    "FilterType": "*.*" /*文件类型*/
+  },
+  {
+    "SourcePath": "D:\\temp\\SourcePath2", /* 需要备份的目录 */
+    "TargetPath": "D:\\temp\\TargetPath", /* 备份后存放目录 */
+    "FileFormat": "yyyyMMddhhmmss", /* 备份文件名:年月日时分秒 */
+    "SyncOne": true, /* 是否立即执行一次 */
+    "IncludeSubdir": true, /* 是否包含子目录 */
+    "ExecutionTime": "00:15:00", /*自动执行时间 时分 */
+    "ZipLevel": 9, /*压缩等级 0-9 越多压缩越小*/
+    "FilterType": "*.*" /*文件类型*/
+  }
+]
