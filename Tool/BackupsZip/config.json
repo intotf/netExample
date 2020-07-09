@@ -6,7 +6,7 @@
     "SyncOne": true, /* 是否立即执行一次 */
     "IncludeSubdir": true, /* 是否包含子目录 */
     "ExecutionTime": "03:00:00", /*自动执行时间 时:分:秒,默认凌晨3点 */
-    "ZipLevel": 9, /*压缩等级 0-9 越多压缩越小*/
+    "ZipLevel": 5, /*压缩等级 0-9 越大压缩越小*/
     "FilterType": "*.*" /*文件类型*/
   },
   {
@@ -16,7 +16,7 @@
     "SyncOne": true, /* 是否立即执行一次 */
     "IncludeSubdir": true, /* 是否包含子目录 */
     "ExecutionTime": "00:15:00", /*自动执行时间 时分 */
-    "ZipLevel": 9, /*压缩等级 0-9 越多压缩越小*/
+    "ZipLevel": 6, /*压缩等级 0-9 越多压缩越小*/
     "FilterType": "*.*" /*文件类型*/
   }
 ]
