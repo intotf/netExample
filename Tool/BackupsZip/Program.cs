@@ -1,4 +1,7 @@
-﻿using Topshelf;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using Topshelf;
 
 namespace BackupsZip
 {
@@ -15,6 +18,5 @@ namespace BackupsZip
                 c.SetDescription("BackupsZipServer");
             });
         }
-
     }
 }

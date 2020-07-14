@@ -84,7 +84,7 @@ namespace BackupsZip
 
             //zip 临时文件
             var zipFile = $"{zipTemp}.zip";
-            ZipFloClass.ZipFile(zipTemp, zipFile, Config.ZipLevel);
+            ZipLib.Zip(zipTemp, zipFile, Config.ZipLevel);
             Directory.Delete(zipTemp, true);
             var targetFile = Path.Combine(this.Config.TargetPath, Path.GetFileName(zipFile));
             CopyFile(zipFile, targetFile);
