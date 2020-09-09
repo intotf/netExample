@@ -67,7 +67,7 @@ namespace TCPServer
         private void ReciveMsg()
         {
             var listBuffer = new List<byte>();
-            byte[] buffer = new byte[8];//设置最多接收5M的信息
+            byte[] buffer = new byte[48];//设置最多接收5M的信息
             while (true)//这里我们循环接收客户端的信息，客户端可以一直发信息,我们创建线程的好处就在这里，因为主线程一旦陷入死循环，那么这个程序就卡了
             {
                 int count = 0;

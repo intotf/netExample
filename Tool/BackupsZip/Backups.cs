@@ -17,7 +17,7 @@ namespace BackupsZip
         /// <summary>
         /// 文件同步
         /// </summary>
-        private readonly Timer timer;
+        //private readonly Timer timer;
 
         /// <summary>
         /// 同步配置
@@ -32,27 +32,27 @@ namespace BackupsZip
         public Backups(Config config)
         {
             this.Config = config;
-            this.timer = new Timer(TimerCallBack, null, Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan); ;
+            //this.timer = new Timer(TimerCallBack, null, Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan); ;
             if (config.SyncOne)
             {
                 TimerCallBack(null);
             }
-            else
-            {
-                SetNextChange(this.Config.ExecutionTime);
-            }
+            //else
+            //{
+            //    SetNextChange(this.Config.ExecutionTime);
+            //}
         }
 
         /// <summary>
         /// 设置下一次执行时间
         /// </summary>
-        private void SetNextChange(TimeSpan ts)
-        {
-            var nextTime = DateTime.Now.Date.AddDays(1).Add(ts);
-            Logger.Default.LogInformation($"{this.Config.SourcePath} 下次备份时间:{nextTime}");
-            //执行完后,重新设置定时器下次执行时间.
-            this.timer.Change(nextTime.Subtract(DateTime.Now), Timeout.InfiniteTimeSpan);
-        }
+        //private void SetNextChange(TimeSpan ts)
+        //{
+        //    var nextTime = DateTime.Now.Date.AddDays(1).Add(ts);
+        //    Logger.Default.LogInformation($"{this.Config.SourcePath} 下次备份时间:{nextTime}");
+        //    //执行完后,重新设置定时器下次执行时间.
+        //    this.timer.Change(nextTime.Subtract(DateTime.Now), Timeout.InfiniteTimeSpan);
+        //}
 
         /// <summary>
         /// 同步一次数据
@@ -90,7 +90,7 @@ namespace BackupsZip
             CopyFile(zipFile, targetFile);
             File.Delete(zipFile);
             Logger.Default.LogInformation($"{this.Config.SourcePath} 成功压缩备份到 ：{targetFile}");
-            SetNextChange(this.Config.ExecutionTime);
+            //SetNextChange(this.Config.ExecutionTime);
         }
 
         /// <summary>

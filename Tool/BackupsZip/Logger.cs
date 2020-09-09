@@ -28,7 +28,7 @@ namespace BackupsZip
         /// </summary>
         static Logger()
         {
-            Factory = new LoggerFactory().AddConsole().AddDebugger();
+            Factory = new LoggerFactory().AddDebugger();
             Default = Factory.CreateLogger("BackupsZip");
         }
     }

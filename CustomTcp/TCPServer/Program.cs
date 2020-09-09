@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -60,6 +61,12 @@ namespace TCPServer
             {
                 Console.WriteLine(e.ToString());
             }
+
+            #region 设置控制台输入最大值
+            byte[] inputBuffer = new byte[1024];
+            var inputStream = Console.OpenStandardInput(inputBuffer.Length);
+            Console.SetIn(new StreamReader(inputStream, Console.InputEncoding, false, inputBuffer.Length));
+            #endregion
 
             while (true)
             {

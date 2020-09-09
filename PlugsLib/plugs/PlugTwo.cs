@@ -11,6 +11,11 @@ namespace PlugsLib.plugs
     /// </summary>
     public class PlugTwo : PlugBase
     {
+        public override void Logs()
+        {
+            Console.WriteLine("必需实现");
+        }
+
         /// <summary>
         /// 发送数据
         /// </summary>

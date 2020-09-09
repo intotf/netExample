@@ -51,11 +51,11 @@ namespace TCPClient
             var client = new AppClient(ip, port);
             client.ReciveMessage = ReciveMessage;
             var d = 0;
-            while (d < 1000)
+            while (d < 10)
             {
                 d++;
                 client.Send(data.ToArray());
-                Task.Delay(1000).Wait();
+                Task.Delay(5000).Wait();
             }
 
 

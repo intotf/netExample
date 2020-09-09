@@ -11,6 +11,11 @@ namespace PlugsLib.plugs
     /// </summary>
     public class PlugOne : PlugBase
     {
+        public override void Logs()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// 发送数据
         /// </summary>
