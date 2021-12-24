@@ -63,6 +63,8 @@ namespace TCPServer
             }
 
             #region 设置控制台输入最大值
+            ///最多只能使用256个字符,它将允许输入254，并为CR和LF保留2。
+            ///StreamReader 还必须具有长度参数，因为它也具有固定的缓冲区。
             byte[] inputBuffer = new byte[1024];
             var inputStream = Console.OpenStandardInput(inputBuffer.Length);
             Console.SetIn(new StreamReader(inputStream, Console.InputEncoding, false, inputBuffer.Length));

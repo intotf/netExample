@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MqMiddleware
 {
-    class YiYingCong:Config 
+    /// <summary>
+    /// 
+    /// </summary>
+    class YiYingCong : Config
     {
         public string Other { get; set; }
     }

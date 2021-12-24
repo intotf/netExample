@@ -6,31 +6,36 @@ using System.Threading.Tasks;
 
 namespace MqMiddleware
 {
+    /// <summary>
+    /// 表示中间键管理
+    /// </summary>
     class MiddlewareManager
     {
         /// <summary>
         /// 所有中间件
         /// </summary>
-        private readonly LinkedList<IMiddleware> middlewares = new LinkedList<IMiddleware>();
+        //private readonly LinkedList<IMiddleware> middlewares = new LinkedList<IMiddleware>();
 
         /// <summary>
         /// 当前所有中间件
         /// </summary>
         private readonly List<IMiddleware> ms = new List<IMiddleware>();
 
-
+        /// <summary>
+        /// 构造中间键管理
+        /// </summary>
         public MiddlewareManager()
         {
+            //添加默认中间件
             this.ms.Add(new DefaultMiddlerware());
         }
-
 
         /// <summary>
         /// 使用协议中间件
         /// </summary>
         /// <typeparam name="TMiddleware">中间件类型</typeparam>
         /// <returns></returns>
-        public TMiddleware Use<TMiddleware>( Config config) where TMiddleware : IMiddleware
+        public TMiddleware Use<TMiddleware>(Config config) where TMiddleware : IMiddleware
         {
             var middleware = Activator.CreateInstance<TMiddleware>();
             middleware.Config = config;
@@ -38,14 +43,12 @@ namespace MqMiddleware
             return middleware;
         }
 
-
         public void Use(IMiddleware middleware)
         {
             if (middleware == null)
             {
                 throw new ArgumentNullException();
             }
-
             ms.Add(middleware);
             ms.Aggregate((prev, next) =>
             {
@@ -55,7 +58,7 @@ namespace MqMiddleware
         }
 
         /// <summary>
-        /// 清除所有协议中间件
+        /// 清除所有中间件
         /// </summary>
         public void Clear()
         {
@@ -72,8 +75,8 @@ namespace MqMiddleware
 
             //ms.ForEach(async (a) =>
             //{
-            //    if(a.Next)
-            //    await a.Invoke(context);
+            //    if (a.Next)
+            //        await a.Invoke(context);
             //});
             return ms.First().Invoke(context);
             //return this.middlewares.First.Value.Invoke(context);

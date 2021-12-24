@@ -21,13 +21,14 @@ namespace MqMiddleware
             }
         }
 
-
         async Task IMiddleware.Invoke(IContenxt context)
         {
             await this.Invoke(context);
             Console.WriteLine("{0} : {1}", this.GetType().Name, context.Data.Title);
-            await this.next.Invoke(context);
-
+            if (this.next != null)
+            {
+                await this.next?.Invoke(context);
+            }
         }
 
         protected abstract Task Invoke(IContenxt context);

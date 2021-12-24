@@ -16,6 +16,9 @@ namespace MqMiddleware
         /// </summary>
         IMiddleware Next { set; }
 
+        /// <summary>
+        /// 中间间配置
+        /// </summary>
         Config Config { get; set; }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace MqMiddleware
             var notifData = new NotifData { Title = "aaa", Content = DateTime.Now.ToFileTimeUtc().ToString() };
             var ms = new MiddlewareManager();
             ms.Use<OneMiddlerware>(new Config { });
-            ms.Use<TwoMiddlerware>(new YiYingCong { Other = "df" });
+            ms.Use<TwoMiddlerware>(new YiYingCong { Other = "df", Host = new Uri("http://www.baidu.com") });
 
 
             while (true)

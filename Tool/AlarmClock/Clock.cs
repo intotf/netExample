@@ -10,7 +10,7 @@ namespace AlarmClock
     /// <summary>
     /// 闹钟
     /// </summary>
-    public class Clock
+    public class Clock : IDisposable
     {
         /// <summary>
         /// 定时器
@@ -83,9 +83,27 @@ namespace AlarmClock
 
         public void TimerCallBack(object state)
         {
-            this.timer.Dispose();
-            this.CallBackAction.Invoke(this.Id);
-            JPusher.PushMsg(this);
+            try
+            {
+                this.timer.Dispose();
+                this.CallBackAction.Invoke(this.Id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ClockTimerCallBack" + ex.Message);
+            }
+            //JPusher.PushMsg(this);
+        }
+
+        /// <summary>
+        /// 释放
+        /// </summary>
+        public void Dispose()
+        {
+            if (timer != null)
+            {
+                this.timer.Dispose();
+            }
         }
     }
 }

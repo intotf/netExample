@@ -368,7 +368,7 @@
             this.RingTime.HeaderText = "时间";
             this.RingTime.Name = "RingTime";
             this.RingTime.ReadOnly = true;
-            this.RingTime.Width = 140;
+            this.RingTime.Width = 180;
             // 
             // Id
             // 
@@ -384,7 +384,7 @@
             this.Note.HeaderText = "提示内容";
             this.Note.Name = "Note";
             this.Note.ReadOnly = true;
-            this.Note.Width = 310;
+            this.Note.Width = 270;
             // 
             // DeleteBtn
             // 

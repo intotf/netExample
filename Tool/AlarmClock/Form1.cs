@@ -151,18 +151,41 @@ namespace AlarmClock
         /// <summary>
         /// 删除闹钟
         /// </summary>
+        /// <param name="id">闹钟Id</param>
+        /// <param name="isCycle">是否按原闹钟重复</param>
         private void RemoveClock(string id)
         {
-            ClockCaches.TryRemove(id, out Clock clock);
-            if (clock.IsCycle)
+            try
             {
-                var model = new Clock(TimeSpan.FromSeconds(clock.IntervalSpan), clock.CallBackAction, true, clock.Note);
-                ClockCaches.AddOrUpdate(model.Id, model, (k, m) => model);
+                if (ClockCaches.TryRemove(id, out var clock))
+                {
+                    clock.Dispose();
+                    if (clock.IsCycle)
+                    {
+                        var model = new Clock(TimeSpan.FromSeconds(clock.IntervalSpan), clock.CallBackAction, true, clock.Note);
+                        ClockCaches.AddOrUpdate(model.Id, model, (k, m) => model);
+                    }
+                }
+                BindDataSource();
+                if (Program.AlarmShowTime > 0)
+                {
+                    try
+                    {
+                        var clockWindow = new Alarm(clock);
+                        if (clockWindow != null)
+                        {
+                            clockWindow.Show();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("RemoveAlarmWindow" + ex.Message);
+                    }
+                }
             }
-            BindDataSource();
-            if (Program.AlarmShowTime > 0)
+            catch (Exception ex)
             {
-                new Alarm(clock).Show();
+                Console.WriteLine("RemoveClock" + ex.Message);
             }
         }
 
@@ -172,8 +195,15 @@ namespace AlarmClock
         /// <param name="input"></param>
         private void AddOrUpdateClock(Clock input)
         {
-            ClockCaches.AddOrUpdate(input.Id, input, (k, m) => input);
-            BindDataSource();
+            try
+            {
+                ClockCaches.AddOrUpdate(input.Id, input, (k, m) => input);
+                BindDataSource();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("AddOrUpdateClock" + ex.Message);
+            }
         }
 
         /// <summary>
@@ -282,7 +312,9 @@ namespace AlarmClock
             if (e.ColumnIndex == 0)//按钮列坐标
             {
                 string id = this.dataGrid.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-                ClockCaches.TryRemove(id, out Clock value);
+                ClockCaches.TryRemove(id, out var clock);
+                clock.Dispose();
+
                 this.dataGrid.Rows.RemoveAt(e.RowIndex);
             }
         }

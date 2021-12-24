@@ -52,6 +52,11 @@ namespace AlarmClock
         public Alarm(Clock clock) :
             base()
         {
+            if (clock == null)
+            {
+                this.Close();
+                return;
+            }
             _Clock = clock;
             InitializeComponent();
             this.Load += Alarm_Load;
@@ -64,6 +69,7 @@ namespace AlarmClock
         /// <param name="e"></param>
         private void Alarm_Load(object sender, EventArgs e)
         {
+
             int x = Screen.PrimaryScreen.WorkingArea.Right - this.Width;
             int y = Screen.PrimaryScreen.WorkingArea.Bottom - this.Height;
             this.Location = new Point(x, y);//设置窗体在屏幕右下角显示
