@@ -34,8 +34,9 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.alarmManage = new System.Windows.Forms.Label();
             this.lbTime = new System.Windows.Forms.Label();
+            this.alarmManage = new System.Windows.Forms.Label();
+            this.cbTopMost = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -45,6 +46,7 @@
             // panel1
             // 
             this.panel1.BackgroundImage = global::AlarmClock.Properties.Resources.titleBg;
+            this.panel1.Controls.Add(this.cbTopMost);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lbTitle);
             this.panel1.Controls.Add(this.pbClose);
@@ -97,15 +99,6 @@
             this.panel2.Size = new System.Drawing.Size(378, 205);
             this.panel2.TabIndex = 3;
             // 
-            // alarmManage
-            // 
-            this.alarmManage.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.alarmManage.ForeColor = System.Drawing.Color.Black;
-            this.alarmManage.Location = new System.Drawing.Point(12, 46);
-            this.alarmManage.Name = "alarmManage";
-            this.alarmManage.Size = new System.Drawing.Size(348, 142);
-            this.alarmManage.TabIndex = 0;
-            // 
             // lbTime
             // 
             this.lbTime.AutoSize = true;
@@ -115,6 +108,26 @@
             this.lbTime.Name = "lbTime";
             this.lbTime.Size = new System.Drawing.Size(0, 14);
             this.lbTime.TabIndex = 1;
+            // 
+            // alarmManage
+            // 
+            this.alarmManage.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.alarmManage.ForeColor = System.Drawing.Color.Black;
+            this.alarmManage.Location = new System.Drawing.Point(12, 46);
+            this.alarmManage.Name = "alarmManage";
+            this.alarmManage.Size = new System.Drawing.Size(348, 142);
+            this.alarmManage.TabIndex = 0;
+            // 
+            // cbTopMost
+            // 
+            this.cbTopMost.AutoSize = true;
+            this.cbTopMost.Location = new System.Drawing.Point(236, 12);
+            this.cbTopMost.Name = "cbTopMost";
+            this.cbTopMost.Size = new System.Drawing.Size(96, 16);
+            this.cbTopMost.TabIndex = 4;
+            this.cbTopMost.Text = "保持窗口最前";
+            this.cbTopMost.UseVisualStyleBackColor = true;
+            this.cbTopMost.CheckedChanged += new System.EventHandler(this.cbTopMost_CheckedChanged);
             // 
             // Alarm
             // 
@@ -131,6 +144,7 @@
             this.Opacity = 0.9D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Alarm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -151,5 +165,6 @@
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbTime;
+        private System.Windows.Forms.CheckBox cbTopMost;
     }
 }

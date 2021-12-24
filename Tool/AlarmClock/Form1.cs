@@ -42,11 +42,6 @@ namespace AlarmClock
             {
                 NotShowToolStripMenuItem.Text = "√ 闹钟提示";
             }
-            else
-            {
-                NotShowToolStripMenuItem.Text = "× 闹钟提示";
-            }
-
         }
 
         private Button[] GetButtons()
@@ -287,12 +282,12 @@ namespace AlarmClock
             if (Program.AlarmShowTime > 0)
             {
                 Program.AlarmShowTime = 0;
-                NotShowToolStripMenuItem.Text = "× 闹钟提示";
+                NotShowToolStripMenuItem.Text = "√ 闹钟提示";
             }
             else
             {
                 Program.AlarmShowTime = int.Parse(System.Configuration.ConfigurationManager.AppSettings["AlarmShowTime"]);
-                NotShowToolStripMenuItem.Text = "√ 闹钟提示";
+                NotShowToolStripMenuItem.Text = "× 闹钟提示";
             }
         }
 

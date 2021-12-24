@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.RingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.addBtn = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -59,10 +63,6 @@
             this.显示定时任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.退出程序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageFast.SuspendLayout();
@@ -88,6 +88,46 @@
             this.dataGrid.TabIndex = 0;
             this.dataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellContentClick);
             this.dataGrid.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGrid_RowStateChanged);
+            // 
+            // RingTime
+            // 
+            this.RingTime.DataPropertyName = "RingTime";
+            dataGridViewCellStyle1.Format = "F";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RingTime.DefaultCellStyle = dataGridViewCellStyle1;
+            this.RingTime.HeaderText = "时间";
+            this.RingTime.Name = "RingTime";
+            this.RingTime.ReadOnly = true;
+            this.RingTime.Width = 180;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Note
+            // 
+            this.Note.DataPropertyName = "Note";
+            this.Note.HeaderText = "提示内容";
+            this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
+            this.Note.Width = 270;
+            // 
+            // DeleteBtn
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = "删除";
+            this.DeleteBtn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DeleteBtn.HeaderText = "操作";
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.ReadOnly = true;
+            this.DeleteBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteBtn.Text = "删除";
+            this.DeleteBtn.Width = 60;
             // 
             // addBtn
             // 
@@ -324,80 +364,40 @@
             this.toolStripSeparator1,
             this.退出程序ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 120);
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveToolStripMenuItem.Text = "保存记录";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // NotShowToolStripMenuItem
             // 
             this.NotShowToolStripMenuItem.Name = "NotShowToolStripMenuItem";
-            this.NotShowToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.NotShowToolStripMenuItem.Text = "不提示";
+            this.NotShowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.NotShowToolStripMenuItem.Text = "×  闹钟提示";
             this.NotShowToolStripMenuItem.Click += new System.EventHandler(this.NotShowToolStripMenuItem_Click);
             // 
             // 显示定时任务ToolStripMenuItem
             // 
             this.显示定时任务ToolStripMenuItem.Name = "显示定时任务ToolStripMenuItem";
-            this.显示定时任务ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.显示定时任务ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.显示定时任务ToolStripMenuItem.Text = "显示定时任务";
             this.显示定时任务ToolStripMenuItem.Click += new System.EventHandler(this.显示定时任务ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // 退出程序ToolStripMenuItem
             // 
             this.退出程序ToolStripMenuItem.Name = "退出程序ToolStripMenuItem";
-            this.退出程序ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.退出程序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.退出程序ToolStripMenuItem.Text = "退出程序";
             this.退出程序ToolStripMenuItem.Click += new System.EventHandler(this.退出程序ToolStripMenuItem_Click);
-            // 
-            // RingTime
-            // 
-            this.RingTime.DataPropertyName = "RingTime";
-            dataGridViewCellStyle1.Format = "F";
-            dataGridViewCellStyle1.NullValue = null;
-            this.RingTime.DefaultCellStyle = dataGridViewCellStyle1;
-            this.RingTime.HeaderText = "时间";
-            this.RingTime.Name = "RingTime";
-            this.RingTime.ReadOnly = true;
-            this.RingTime.Width = 180;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Note
-            // 
-            this.Note.DataPropertyName = "Note";
-            this.Note.HeaderText = "提示内容";
-            this.Note.Name = "Note";
-            this.Note.ReadOnly = true;
-            this.Note.Width = 270;
-            // 
-            // DeleteBtn
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = "删除";
-            this.DeleteBtn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DeleteBtn.HeaderText = "操作";
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.ReadOnly = true;
-            this.DeleteBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteBtn.Text = "删除";
-            this.DeleteBtn.Width = 60;
             // 
             // Form1
             // 

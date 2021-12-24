@@ -69,7 +69,8 @@ namespace AlarmClock
         /// <param name="e"></param>
         private void Alarm_Load(object sender, EventArgs e)
         {
-
+            this.TopMost = Program.topMost;
+            cbTopMost.Checked = Program.topMost;
             int x = Screen.PrimaryScreen.WorkingArea.Right - this.Width;
             int y = Screen.PrimaryScreen.WorkingArea.Bottom - this.Height;
             this.Location = new Point(x, y);//设置窗体在屏幕右下角显示
@@ -116,6 +117,12 @@ namespace AlarmClock
         {
             this.timer.Dispose();
             this.Close();
+        }
+
+        private void cbTopMost_CheckedChanged(object sender, EventArgs e)
+        {
+            this.TopMost = cbTopMost.Checked;
+            Program.topMost = cbTopMost.Checked;
         }
     }
 }
