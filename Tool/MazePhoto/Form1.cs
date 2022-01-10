@@ -76,7 +76,6 @@ namespace MazePhoto
             int initY = 0;
             int _x = initX;
             int _y = initY;
-            PictureBox tmpBox = new PictureBox();
             for (int x = 0; x < height * width; x++)
             {
                 if (currentPoint % width == 0)
@@ -88,7 +87,7 @@ namespace MazePhoto
                 {
                     _x += chessLength;
                 }
-                tmpBox = new PictureBox();
+                var tmpBox = new PictureBox();
                 tmpBox.Left = _x;
                 tmpBox.Top = _y;
                 tmpBox.Width = chessLength;
@@ -180,22 +179,14 @@ namespace MazePhoto
         {
             numMap[0, 0] = numMap[0, 0] ^ 8;//打开一个缺口，作为进入口。
             numMap[height - 1, width - 1] = numMap[height - 1, width - 1] ^ 2;//打开一个缺口作为出去口。
-
-            pictureBox1.Width = width * 34;
-            pictureBox1.Height = height * 34;
-            Graphics g1 = pictureBox1.CreateGraphics();//画布
-            g1.Clear(Color.White);
-
             for (int m = 0; m < height; m++)
             {
                 for (int n = 0; n < width; n++)
                 {
                     int x = numMap[m, n];
-                    g1.DrawImage(ImageList[x], n * 30, m * 30);
                     map[m, n].Image = ImageList[x];
                 }
             }
-            g1.Dispose();
             map[0, 0].Image = PathImageList[numMap[0, 0]]; //给第一格子换成橘黄色的背景
         }
 
@@ -206,6 +197,8 @@ namespace MazePhoto
         /// <param name="e"></param>
         private void createBtn_Click(object sender, EventArgs e)
         {
+            pointX = 0;
+            pointY = 0;
             height = int.Parse(this.rowBox.Text);
             width = int.Parse(this.columnBox.Text);
             this.mazePanel.Controls.Clear();
@@ -213,7 +206,7 @@ namespace MazePhoto
             map = new PictureBox[height, width];
             numMap = new int[height, width];
             drawCheckerboar();
-            CreateNumMap((int)height / 2, (int)width / 2, 0);//在迷宫的中间开始遍历
+            CreateNumMap(height / 2, width / 2, 0);//在迷宫的中间开始遍历
             //CreateNumMap(0, 0, 0);
             CreateMap();
         }
@@ -294,6 +287,93 @@ namespace MazePhoto
             if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+
+        //重写键盘事件,用于走迷宫
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (numMap != null)
+            {
+                int m = pointX;
+                int n = pointY;
+                int direct = 0;
+                switch (keyData)
+                {
+                    case Keys.Up:
+                        m--;
+                        direct = 8;
+                        break;
+                    case Keys.Down:
+                        m++;
+                        direct = 2;
+                        break;
+                    case Keys.Left:
+                        n--;
+                        direct = 1;
+                        break;
+                    case Keys.Right:
+                        n++;
+                        direct = 4;
+                        break;
+                }
+                if (m < height && n < width && m >= 0 && n >= 0 && (numMap[pointX, pointY] & direct) != 0)
+                {
+                    map[pointX, pointY].Image = ImageList[numMap[pointX, pointY]];
+                    map[m, n].Image = PathImageList[numMap[m, n]];
+                    //lb_x.Text = m.ToString();
+                    //lb_y.Text = n.ToString();
+                    pointX = m;
+                    pointY = n;
+                    if (m == height - 1 && n == width - 1)
+                        MessageBox.Show("顺利过关");
+                    return true;
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            var mazeImg = new Bitmap(mazePanel.Width, mazePanel.Height);
+            mazePanel.DrawToBitmap(mazeImg, new Rectangle(0, 0, mazeImg.Width, mazeImg.Height));
+            e.Graphics.DrawImage(mazeImg, 0, 0, mazeImg.Width, mazeImg.Height);
+        }
+
+        private void printBtn_Click(object sender, EventArgs e)
+        {
+            PrintDialog MyPrintDg = new PrintDialog();
+            MyPrintDg.Document = printDocument1;
+            if (MyPrintDg.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    printDocument1.Print();
+                }
+                catch
+                {   //停止打印
+                    printDocument1.PrintController.OnEndPrint(printDocument1, new System.Drawing.Printing.PrintEventArgs());
+                }
+            }
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            //设置文件类型 
+            sfd.Filter = "图片（*.png）|*.png";
+            //设置默认文件类型显示顺序 
+            sfd.FilterIndex = 1;
+            //保存对话框是否记忆上次打开的目录 
+            sfd.RestoreDirectory = true;
+
+            //点了保存按钮进入 
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                var mazeImg = new Bitmap(mazePanel.Width, mazePanel.Height);
+                mazePanel.DrawToBitmap(mazeImg, new Rectangle(0, 0, mazeImg.Width, mazeImg.Height));
+                mazeImg.Save(sfd.FileName);
             }
         }
     }
