@@ -155,6 +155,12 @@ namespace AlarmClock
                 if (ClockCaches.TryRemove(id, out var clock))
                 {
                     clock.Dispose();
+                    var msg = clock.Note;
+                    if (string.IsNullOrEmpty(clock.Note))
+                    {
+                        msg = "AlarmClock 时间到了";
+                    }
+                    Dingtalk.Notice(msg);
                     if (clock.IsCycle)
                     {
                         var model = new Clock(TimeSpan.FromSeconds(clock.IntervalSpan), clock.CallBackAction, true, clock.Note);
