@@ -160,7 +160,7 @@ namespace AlarmClock
                     {
                         msg = "AlarmClock 时间到了";
                     }
-                    Dingtalk.Notice(msg);
+                    Webhook.Notice(msg);
                     if (clock.IsCycle)
                     {
                         var model = new Clock(TimeSpan.FromSeconds(clock.IntervalSpan), clock.CallBackAction, true, clock.Note);
