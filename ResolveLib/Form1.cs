@@ -15,10 +15,14 @@ namespace ResolveLib
     public partial class Form1 : Form
     {
         private readonly JsonSerializerSettings jsonSettions = new JsonSerializerSettings { DateFormatString = "yyyy-MM-dd HH:mm:ss" };
+        private readonly Icon defaultIcon = RS.GetIcon("mstsc.ico");
+
+
         public Form1()
         {
             InitializeComponent();
             this.Load += Form1_Load;
+            this.Icon = defaultIcon;
         }
 
         private void Form1_Load(object sender, EventArgs e)

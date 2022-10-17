@@ -86,5 +86,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Newtonsoft.Json.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="mstsc.ico" />
+    <Content Include="readme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
